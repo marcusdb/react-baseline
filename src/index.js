@@ -1,24 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-
 import { Provider } from 'react-redux'
-
-
 import { Route } from 'react-router'
-
 import { ConnectedRouter } from 'react-router-redux'
 import registerServiceWorker from './registerServiceWorker';
-
 import store, { history } from './store'
-
-
-const Home = () => (
-    <div>
-        <h2>Home</h2>
-        <a href='/about'>go to about</a>
-    </div>
-)
+import Home from './containers/home'
 
 const About = () => (
     <div>
@@ -26,8 +13,6 @@ const About = () => (
         <a href='/'>go to home</a>
     </div>
 )
-
-
 
 // Now you can dispatch navigation actions from anywhere!
 // store.dispatch(push('/foo'))
@@ -46,6 +31,3 @@ ReactDOM.render(
     document.getElementById('root')
 )
 registerServiceWorker();
-
-
-
