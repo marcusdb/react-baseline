@@ -9,6 +9,9 @@ import {
     decrementAsync
 } from '../../modules/counter'
 
+import {
+    ping    
+} from '../../modules/ping'
 
 const Home = props => (
     <div>
@@ -24,7 +27,8 @@ const Home = props => (
             <button onClick={props.decrement} disabled={props.isDecrementing}>Decrementing</button>
             <button onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
         </p>
-
+        <h1>is pinging: ---{props.isPinging?'yes':'no'}---</h1>
+        <p><button onClick={() => props.ping()}>ping</button></p>
         <p><button onClick={() => props.changePage()}>Go to about page via redux</button></p>
     </div>
 )
@@ -32,10 +36,12 @@ const Home = props => (
 const mapStateToProps = state => ({
     count: state.counter.count,
     isIncrementing: state.counter.isIncrementing,
-    isDecrementing: state.counter.isDecrementing
+    isDecrementing: state.counter.isDecrementing,
+    isPinging: state.ping.isPinging
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+    ping,
     increment,
     incrementAsync,
     decrement,
