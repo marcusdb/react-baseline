@@ -15,7 +15,7 @@ import {
 
 const Home = props => (
     <div>
-        <h1>Home</h1>
+        <h1>Home bla2</h1>
         <p>Count: {props.count}</p>
 
         <p>
@@ -46,7 +46,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     incrementAsync,
     decrement,
     decrementAsync,
-    changePage: () => push('/about-us')
+    changePage: () => push('/about')
 }, dispatch)
 
 export default connect(

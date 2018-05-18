@@ -6,11 +6,12 @@ import { ConnectedRouter } from 'react-router-redux'
 import registerServiceWorker from './registerServiceWorker';
 import store, { history } from './store'
 import Home from './containers/home'
+import {Link } from "react-router-dom";
 
 const About = () => (
     <div>
         <h2>About</h2>
-        <a href='/'>go to home</a>
+        <Link to='/'>go to home</Link>
     </div>
 )
 
@@ -30,4 +31,7 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 )
+if (module.hot) {
+    module.hot.accept();
+  }
 registerServiceWorker();
