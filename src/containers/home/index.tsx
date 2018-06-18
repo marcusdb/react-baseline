@@ -1,4 +1,5 @@
-import React from 'react'
+import * as React from 'react';
+
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -13,7 +14,7 @@ import {
     ping    
 } from '../../modules/ping'
 
-const Home = props => (
+const Home = (props:any) => (
     <div>
         <h1>Home bla2</h1>
         <p>Count: {props.count}</p>
@@ -33,14 +34,14 @@ const Home = props => (
     </div>
 )
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state:any) => ({
     count: state.counter.count,
     isIncrementing: state.counter.isIncrementing,
     isDecrementing: state.counter.isDecrementing,
     isPinging: state.ping.isPinging
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = (dispatch:any) => bindActionCreators({
     ping,
     increment,
     incrementAsync,
