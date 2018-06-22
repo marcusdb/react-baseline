@@ -1,20 +1,33 @@
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/mapTo';
-const PING = 'PING';
-const PONG = 'PONG';
+import { Epic, ofType } from "redux-observable";
+import { createAction, getType } from 'typesafe-actions';
+import { delay, mapTo } from 'rxjs/operators';
 
-export const ping = () => ({ type: PING });
+export interface Action {
+  type: string;
+  payload?: {};
 
-export const pingEpic = action$ =>
-  action$.ofType(PING)
-    .delay(1000) // Asynchronously wait 1000ms then continue
-    .mapTo({ type: 'PONG' });
+}
 
-export const pingReducer = (state = { isPinging: false }, action) => {
+
+// type only
+export const ping = createAction('ping');
+const pong = createAction('pong');
+
+export const pingEpic: Epic<Action> = (action$) =>
+  action$.pipe(ofType(getType(ping)),
+    delay(1000), // Asynchronously wait 1000ms then continue
+    mapTo(pong()));
+
+export interface MapState {
+  isPinging: boolean;
+}
+
+export const pingReducer = (state: MapState = { isPinging: false }, action: Action): MapState => {
   switch (action.type) {
     case 'PING':
       return { isPinging: true };
-
     case 'PONG':
       return { isPinging: false };
 
@@ -22,3 +35,4 @@ export const pingReducer = (state = { isPinging: false }, action) => {
       return state;
   }
 };
+

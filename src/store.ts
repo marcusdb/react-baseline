@@ -5,7 +5,7 @@ import createHistory from 'history/createBrowserHistory';
 import rootReducer, { rootEpic } from './modules';
 import { createEpicMiddleware } from 'redux-observable';
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware();
 // Create a history of your choosing (we're using a browser history in this case)
 export const history = createHistory();
 
@@ -24,6 +24,8 @@ if (process.env.NODE_ENV === 'development') {
 // Also apply our middleware for navigating
 
 const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
+
+epicMiddleware.run(rootEpic);
 
 
 export default createStore(rootReducer, initialState, composedEnhancers);
