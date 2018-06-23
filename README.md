@@ -1,4 +1,4 @@
-https://travis-ci.com/marcusdb/react-baseline.svg?branch=master
+[![Build Status](https://travis-ci.com/marcusdb/react-baseline.svg?branch=master)](https://travis-ci.com/marcusdb/react-baseline)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
