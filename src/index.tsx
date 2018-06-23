@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-import { Route } from 'react-router'
-import { ConnectedRouter } from 'react-router-redux'
+import { Provider } from 'react-redux';
+import { Route } from 'react-router';
+import { Link } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+
+import Home from './containers/home';
 import registerServiceWorker from './registerServiceWorker';
-import store, { history } from './store'
-import Home from './containers/home'
-import {Link } from "react-router-dom";
+import store, { history } from './store';
 
 const About = () => (
     <div>
@@ -23,7 +24,7 @@ ReactDOM.render(
         { /* ConnectedRouter will use the store from Provider automatically */}
         <ConnectedRouter history={history}>
             <div>
-                <Route exact path="/" component={Home} />
+                <Route exact={true} path="/" component={Home} />
                 <Route path="/about" component={About} />
 
             </div>

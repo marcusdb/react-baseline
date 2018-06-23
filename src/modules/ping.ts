@@ -1,8 +1,8 @@
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/mapTo';
-import { Epic, ofType } from "redux-observable";
-import { createAction, getType } from 'typesafe-actions';
+import { Epic, ofType } from 'redux-observable';
 import { delay, mapTo } from 'rxjs/operators';
+import { createAction, getType } from 'typesafe-actions';
+
+
 
 export interface Action {
   type: string;

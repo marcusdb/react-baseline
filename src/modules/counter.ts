@@ -5,8 +5,9 @@ export const DECREMENT = 'counter/DECREMENT';
 
 const initialState = {
   count: 0,
+  isDecrementing: false,
   isIncrementing: false,
-  isDecrementing: false
+  
 };
 
 export default (state = initialState, action:any) => {

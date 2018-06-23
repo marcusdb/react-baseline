@@ -1,18 +1,10 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { bindActionCreators } from 'redux';
 
-import { push } from 'react-router-redux'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import {
-    increment,
-    incrementAsync,
-    decrement,
-    decrementAsync
-} from '../../modules/counter'
-
-import {
-    ping    
-} from '../../modules/ping'
+import { decrement, decrementAsync, increment, incrementAsync } from '../../modules/counter';
+import { ping } from '../../modules/ping';
 
 const Home = (props:any) => (
     <div>
@@ -29,25 +21,27 @@ const Home = (props:any) => (
             <button onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
         </p>
         <h1>is pinging: ---{props.isPinging?'yes':'no'}---</h1>
-        <p><button onClick={() => props.ping()}>ping</button></p>
-        <p><button onClick={() => props.changePage()}>Go to about page via redux</button></p>
+        <p><button onClick={props.ping}>ping</button></p>
+        <p><button onClick={props.changePage}>Go to about page via redux</button></p>
     </div>
 )
 
 const mapStateToProps = (state:any) => ({
     count: state.counter.count,
-    isIncrementing: state.counter.isIncrementing,
     isDecrementing: state.counter.isDecrementing,
+    isIncrementing: state.counter.isIncrementing,
+    
     isPinging: state.ping.isPinging
 })
 
 const mapDispatchToProps = (dispatch:any) => bindActionCreators({
-    ping,
-    increment,
-    incrementAsync,
+    changePage: () => push('/about'),
     decrement,
     decrementAsync,
-    changePage: () => push('/about')
+    increment,
+    incrementAsync,
+    
+    ping
 }, dispatch)
 
 export default connect(

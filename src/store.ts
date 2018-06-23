@@ -1,9 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
-import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import rootReducer, { rootEpic } from './modules';
+import { routerMiddleware } from 'react-router-redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+import thunk from 'redux-thunk';
+
+import rootReducer, { rootEpic } from './modules';
 
 const epicMiddleware = createEpicMiddleware();
 // Create a history of your choosing (we're using a browser history in this case)
@@ -14,7 +15,7 @@ const enhancers = [];
 const middleware = [thunk, routerMiddleware(history), epicMiddleware]
 
 if (process.env.NODE_ENV === 'development') {
-    const devToolsExtension = window['__REDUX_DEVTOOLS_EXTENSION__'];
+    const devToolsExtension = (window as any).__REDUX_DEVTOOLS_EXTENSION__;
 
     if (typeof devToolsExtension === 'function') {
         enhancers.push(devToolsExtension());
