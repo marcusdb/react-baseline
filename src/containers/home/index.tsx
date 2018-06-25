@@ -23,6 +23,7 @@ const Home = (props:any) => (
         <h1>is pinging: ---{props.isPinging?'yes':'no'}---</h1>
         <p><button onClick={props.ping}>ping</button></p>
         <p><button onClick={props.changePage}>Go to about page via redux</button></p>
+        
     </div>
 )
 
